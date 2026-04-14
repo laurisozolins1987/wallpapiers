@@ -102,8 +102,9 @@ class SearchViewModel(
             }
             if (localResults.isNotEmpty()) {
                 val sorted = WallpaperRanking.sort(localResults, preferences, _sortOption.value ?: WallpaperSortOption.TRENDING)
-                currentItems = sorted.toMutableList()
-                _searchResults.postValue(sorted)
+                val preview = sorted.take(MAX_LOCAL_PREVIEW)
+                currentItems = preview.toMutableList()
+                _searchResults.postValue(preview)
             }
         }
 
@@ -135,14 +136,13 @@ class SearchViewModel(
                 }
 
                 val sortedItems = withContext(Dispatchers.Default) {
-                    if (append) {
-                        currentItems += result.items
+                    val items = if (append) {
+                        currentItems + result.items
                     } else {
-                        currentItems = result.items.toMutableList()
+                        result.items.toList()
                     }
-
                     WallpaperRanking.sort(
-                        currentItems,
+                        items,
                         preferences,
                         sortOption
                     )
@@ -176,5 +176,9 @@ class SearchViewModel(
             is SearchMode.Search -> mode.query.isNotBlank()
             is SearchMode.Category -> mode.categoryName.isNotBlank()
         }
+    }
+
+    companion object {
+        private const val MAX_LOCAL_PREVIEW = 24
     }
 }

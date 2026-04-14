@@ -30,7 +30,7 @@
                     android:id="@+id/ivHeroWallpaper"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:alpha="0.88"
+                    android:alpha="0.95"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -227,11 +227,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:cardBackgroundColor="@color/surface_light"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="2dp"
-                app:strokeColor="@color/surface_alt_light"
-                app:strokeWidth="1dp">
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -245,7 +242,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="@color/primary"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -254,7 +251,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:textColor="@color/text_secondary_light"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:textSize="11sp" />
 
                 </LinearLayout>
@@ -266,11 +263,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="@color/surface_light"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="2dp"
-                app:strokeColor="@color/surface_alt_light"
-                app:strokeWidth="1dp">
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -284,7 +278,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="@color/primary"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -293,7 +287,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:textColor="@color/text_secondary_light"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:textSize="11sp" />
 
                 </LinearLayout>
@@ -305,11 +299,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="@color/surface_light"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="2dp"
-                app:strokeColor="@color/surface_alt_light"
-                app:strokeWidth="1dp">
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -323,7 +314,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="HD"
-                        android:textColor="@color/primary"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -332,7 +323,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:textColor="@color/text_secondary_light"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:textSize="11sp" />
 
                 </LinearLayout>
@@ -412,7 +403,7 @@
                 android:background="@drawable/bg_count_badge"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="5dp"
-                android:textColor="@color/primary"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -447,9 +438,7 @@
             android:layout_marginBottom="28dp"
             android:text="@string/view_collections"
             android:textStyle="bold"
-            app:cornerRadius="28dp"
-            app:icon="@android:drawable/ic_menu_gallery"
-            app:iconGravity="textStart" />
+            app:cornerRadius="28dp" />
 
     </LinearLayout>
 

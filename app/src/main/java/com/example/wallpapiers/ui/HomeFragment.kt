@@ -159,8 +159,10 @@ class HomeFragment : Fragment() {
 
         com.bumptech.glide.Glide.with(binding.ivHeroWallpaper)
             .load(WallpaperImageResolver.heroUrl(wallpaper, appPreferences.isDataSaverEnabled()))
-            .placeholder(android.R.color.darker_gray)
-            .error(android.R.color.darker_gray)
+            .thumbnail(0.15f)
+            .placeholder(android.R.color.transparent)
+            .error(android.R.color.transparent)
+            .transition(com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade(400))
             .into(binding.ivHeroWallpaper)
     }
 
