@@ -47,6 +47,7 @@ class CategoryAdapter(
             Glide.with(binding.ivCategory)
                 .load(category.imageUrl)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .override(280, 168)
                 .placeholder(android.R.color.darker_gray)
                 .error(android.R.color.darker_gray)
                 .centerCrop()

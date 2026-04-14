@@ -12,7 +12,7 @@ interface PixabayApi {
         @Query("q") query: String? = null,
         @Query("category") category: String? = null,
         @Query("page") page: Int = 1,
-        @Query("per_page") perPage: Int = 80,
+        @Query("per_page") perPage: Int = 20,
         @Query("order") order: String = "popular",
         @Query("orientation") orientation: String = "vertical",
         @Query("image_type") imageType: String = "photo",

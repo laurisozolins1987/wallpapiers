@@ -56,6 +56,7 @@ class TrendingWallpaperAdapter(
             Glide.with(binding.ivWallpaper)
                 .load(WallpaperImageResolver.trendingUrl(wallpaper, dataSaverEnabled))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .override(440, 600)
                 .placeholder(android.R.color.darker_gray)
                 .error(android.R.color.darker_gray)
                 .into(binding.ivWallpaper)

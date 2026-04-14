@@ -134,17 +134,19 @@ class SearchViewModel(
                     }
                 }
 
-                if (append) {
-                    currentItems += result.items
-                } else {
-                    currentItems = result.items.toMutableList()
-                }
+                val sortedItems = withContext(Dispatchers.Default) {
+                    if (append) {
+                        currentItems += result.items
+                    } else {
+                        currentItems = result.items.toMutableList()
+                    }
 
-                val sortedItems = WallpaperRanking.sort(
-                    currentItems,
-                    preferences,
-                    sortOption
-                )
+                    WallpaperRanking.sort(
+                        currentItems,
+                        preferences,
+                        sortOption
+                    )
+                }
                 currentItems = sortedItems.toMutableList()
                 _searchResults.postValue(sortedItems)
                 _hasMore.postValue(result.hasMore)

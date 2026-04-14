@@ -12,7 +12,7 @@ interface PexelsApi {
     suspend fun getCuratedWallpapers(
         @Header("Authorization") apiKey: String,
         @Query("page") page: Int,
-        @Query("per_page") perPage: Int = 80
+        @Query("per_page") perPage: Int = 20
     ): Response<PexelsResponse>
 
     @GET("search")
@@ -20,6 +20,6 @@ interface PexelsApi {
         @Header("Authorization") apiKey: String,
         @Query("query") query: String,
         @Query("page") page: Int,
-        @Query("per_page") perPage: Int = 80
+        @Query("per_page") perPage: Int = 20
     ): Response<PexelsResponse>
 }

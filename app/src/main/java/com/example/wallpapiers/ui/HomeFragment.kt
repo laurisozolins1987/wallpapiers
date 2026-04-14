@@ -98,6 +98,8 @@ class HomeFragment : Fragment() {
         binding.rvTrendingWallpapers.apply {
             adapter = trendingAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            setItemViewCacheSize(6)
         }
 
         categoryAdapter = CategoryAdapter(emptyList()) { category ->
@@ -106,6 +108,8 @@ class HomeFragment : Fragment() {
         binding.rvCategories.apply {
             adapter = categoryAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            setItemViewCacheSize(6)
         }
     }
 

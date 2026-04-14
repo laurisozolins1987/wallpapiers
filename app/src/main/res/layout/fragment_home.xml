@@ -4,19 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/windowBackground"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:overScrollMode="never">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
+        <!-- ═══ Hero Section ═══ -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="360dp"
-            app:cardCornerRadius="32dp"
-            app:cardElevation="0dp">
+            android:layout_height="420dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="36dp"
+            app:cardElevation="8dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -27,7 +30,7 @@
                     android:id="@+id/ivHeroWallpaper"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:alpha="0.92"
+                    android:alpha="0.88"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -43,15 +46,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!-- Top bar -->
                 <TextView
                     android:id="@+id/tvBrand"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="22dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_stats_chip"
+                    android:letterSpacing="0.15"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="8dp"
                     android:text="@string/home_brand_label"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -59,40 +67,60 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="14dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageButton
-                        android:id="@+id/btnSearch"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/content_desc_search"
-                        android:src="@android:drawable/ic_menu_search"
-                        android:tint="@android:color/white" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        app:cardBackgroundColor="#33FFFFFF"
+                        app:cardCornerRadius="22dp"
+                        app:cardElevation="0dp">
 
-                    <ImageButton
-                        android:id="@+id/btnSettings"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/content_desc_settings"
-                        android:src="@android:drawable/ic_menu_manage"
-                        android:tint="@android:color/white" />
+                        <ImageButton
+                            android:id="@+id/btnSearch"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/content_desc_search"
+                            android:src="@android:drawable/ic_menu_search"
+                            android:tint="@android:color/white" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="10dp"
+                        app:cardBackgroundColor="#33FFFFFF"
+                        app:cardCornerRadius="22dp"
+                        app:cardElevation="0dp">
+
+                        <ImageButton
+                            android:id="@+id/btnSettings"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/content_desc_settings"
+                            android:src="@android:drawable/ic_menu_manage"
+                            android:tint="@android:color/white" />
+
+                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
 
+                <!-- Hero content -->
                 <LinearLayout
                     android:id="@+id/heroContent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginEnd="22dp"
-                    android:layout_marginBottom="22dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="28dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -102,9 +130,11 @@
                         android:id="@+id/tvHeroEyebrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_stats_chip"
-                        android:paddingHorizontal="12dp"
-                        android:paddingVertical="8dp"
+                        android:background="@drawable/bg_hero_eyebrow"
+                        android:letterSpacing="0.08"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="7dp"
+                        android:textAllCaps="true"
                         android:textColor="@android:color/white"
                         android:textSize="11sp"
                         android:textStyle="bold" />
@@ -113,12 +143,14 @@
                         android:id="@+id/tvHeroTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginTop="16dp"
                         android:ellipsize="end"
+                        android:fontFamily="sans-serif-medium"
+                        android:lineSpacingExtra="4dp"
                         android:maxLines="2"
                         android:text="@string/home_hero_default_title"
                         android:textColor="@android:color/white"
-                        android:textSize="28sp"
+                        android:textSize="26sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -126,24 +158,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="2dp"
+                        android:maxLines="2"
                         android:text="@string/home_hero_default_subtitle"
-                        android:textColor="#E6FFFFFF"
-                        android:textSize="14sp" />
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/tvHeroSource"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="5dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:textColor="#E6FFFFFF"
+                        android:textColor="#99FFFFFF"
                         android:textSize="12sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="18dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -153,7 +187,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="12dp"
                             android:background="@drawable/bg_stats_chip"
-                            android:paddingHorizontal="12dp"
+                            android:paddingHorizontal="14dp"
                             android:paddingVertical="8dp"
                             android:textColor="@android:color/white"
                             android:textSize="12sp"
@@ -163,12 +197,13 @@
                             android:id="@+id/btnFeaturedAction"
                             style="@style/Widget.Material3.Button"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="48dp"
                             android:layout_weight="1"
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="@string/featured_action"
-                            app:cornerRadius="22dp" />
+                            android:textStyle="bold"
+                            app:cornerRadius="24dp" />
 
                     </LinearLayout>
 
@@ -178,139 +213,208 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- ═══ Stats Strip ═══ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="3">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/bg_surface_panel"
-                android:orientation="vertical"
-                android:padding="16dp">
+                app:cardBackgroundColor="@color/surface_light"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/surface_alt_light"
+                app:strokeWidth="1dp">
 
-                <TextView
-                    android:id="@+id/tvStatValueOne"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textColor="?attr/colorOnBackground"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/tvStatLabelOne"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/text_secondary_light"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvStatValueOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvStatLabelOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/text_secondary_light"
+                        android:textSize="11sp" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_surface_panel"
-                android:orientation="vertical"
-                android:padding="16dp">
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvStatValueTwo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textColor="?attr/colorOnBackground"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/tvStatLabelTwo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/text_secondary_light"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_surface_panel"
-                android:orientation="vertical"
-                android:padding="16dp">
+                app:cardBackgroundColor="@color/surface_light"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/surface_alt_light"
+                app:strokeWidth="1dp">
 
-                <TextView
-                    android:id="@+id/tvStatValueThree"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="HD"
-                    android:textColor="?attr/colorOnBackground"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/tvStatLabelThree"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tvStatValueTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvStatLabelTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/text_secondary_light"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/surface_light"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/surface_alt_light"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/text_secondary_light"
-                    android:textSize="12sp" />
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvStatValueThree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HD"
+                        android:textColor="@color/primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvStatLabelThree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/text_secondary_light"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- ═══ Categories Section ═══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:text="Explore moods"
-            android:textColor="?attr/colorOnBackground"
-            android:textSize="21sp"
-            android:textStyle="bold" />
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="22dp"
+                android:background="@color/accent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:text="Explore moods"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCategories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
+            android:clipToPadding="false"
             android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+        <!-- ═══ Trending Section ═══ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="28dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="22dp"
+                android:background="@color/primary" />
 
             <TextView
                 android:id="@+id/tvSectionEyebrow"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
                 android:text="@string/top_downloads_section_label"
                 android:textColor="?attr/colorOnBackground"
-                android:textSize="21sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvTrendingCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_secondary_light"
-                android:textSize="13sp" />
+                android:background="@drawable/bg_count_badge"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -319,7 +423,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
+            android:clipToPadding="false"
             android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <ProgressBar
@@ -334,11 +441,15 @@
             android:id="@+id/btnViewCollections"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="24dp"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="28dp"
             android:text="@string/view_collections"
-            app:cornerRadius="22dp" />
+            android:textStyle="bold"
+            app:cornerRadius="28dp"
+            app:icon="@android:drawable/ic_menu_gallery"
+            app:iconGravity="textStart" />
 
     </LinearLayout>
 

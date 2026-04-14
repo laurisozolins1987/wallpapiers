@@ -298,10 +298,10 @@ class WallpaperRepository(
     }
 
     companion object {
-        private const val PIXABAY_PAGE_SIZE = 40
-        private const val HOME_FEED_MAX_ITEMS = 180
+        private const val PIXABAY_PAGE_SIZE = 20
+        private const val HOME_FEED_MAX_ITEMS = 80
         private const val DEFAULT_CATEGORY = "All"
-        private const val API_TIMEOUT_MS = 8000L
+        private const val API_TIMEOUT_MS = 6000L
         private val HOME_PEXELS_QUERIES = listOf(
             "amoled wallpaper",
             "nature wallpaper"

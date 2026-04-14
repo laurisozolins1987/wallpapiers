@@ -152,6 +152,8 @@ class SearchFragment : Fragment() {
         binding.rvSearchResults.apply {
             adapter = wallpaperAdapter
             layoutManager = gridLayoutManager
+            setHasFixedSize(true)
+            setItemViewCacheSize(8)
         }
     }
 

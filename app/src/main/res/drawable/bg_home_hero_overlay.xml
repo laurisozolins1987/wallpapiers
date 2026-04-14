@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient
-        android:angle="270"
-        android:centerColor="@color/hero_overlay"
-        android:endColor="#0808111F"
-        android:startColor="#6608111F" />
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:angle="270"
+                android:centerColor="#5508111F"
+                android:endColor="#0808111F"
+                android:startColor="#4408111F" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient
+                android:angle="270"
+                android:endColor="#0008111F"
+                android:startColor="#CC08111F"
+                android:centerY="0.65" />
+        </shape>
+    </item>
+</layer-list>
