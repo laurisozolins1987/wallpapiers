@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="270"
+        android:centerColor="@color/hero_overlay"
+        android:endColor="#0808111F"
+        android:startColor="#6608111F" />
+</shape>

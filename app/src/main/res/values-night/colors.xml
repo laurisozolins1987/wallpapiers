@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="surface_light">#111A28</color>
+    <color name="surface_alt_light">#172335</color>
+    <color name="text_secondary_light">#9CADC8</color>
+</resources>
