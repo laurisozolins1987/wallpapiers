@@ -35,6 +35,7 @@ class SearchFragment : Fragment() {
     private lateinit var gridLayoutManager: GridLayoutManager
     private val args: SearchFragmentArgs by navArgs()
     private var lastNavigationTimestamp = 0L
+    private var isCategoryMode = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,25 +57,51 @@ class SearchFragment : Fragment() {
         val viewModelFactory = SearchViewModelFactory(repository, appPreferences)
         viewModel = ViewModelProvider(this, viewModelFactory)[SearchViewModel::class.java]
 
+        isCategoryMode = args.openAsCategory && args.initialQuery.isNotBlank()
+
         setupRecyclerView()
         setupObservers()
+        configureMode()
+
+        // Set chip defaults BEFORE attaching listeners to avoid race conditions
+        binding.chipSortTrending.isChecked = true
+        binding.chipSourceAll.isChecked = true
+
         setupActions()
         applyDisplayPreferences()
 
+        // Start loading content
         if (args.initialQuery.isNotBlank()) {
-            binding.etSearch.setText(args.initialQuery)
+            if (!isCategoryMode) {
+                binding.etSearch.setText(args.initialQuery)
+            }
             viewModel.start(args.initialQuery, args.initialTitle, args.openAsCategory)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        applyDisplayPreferences()
+        if (_binding != null) {
+            applyDisplayPreferences()
+        }
+    }
+
+    private fun configureMode() {
+        if (isCategoryMode) {
+            binding.searchSection.isVisible = false
+            binding.categoryHeader.isVisible = true
+            binding.tvCategoryTitle.text = args.initialTitle.ifBlank { args.initialQuery }
+            binding.tvCategorySubtitle.text = getString(R.string.category_browse_subtitle)
+            binding.emptyStateGroup.isVisible = false
+        } else {
+            binding.searchSection.isVisible = true
+            binding.categoryHeader.isVisible = false
+        }
     }
 
     private fun setupActions() {
         binding.toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
+            if (isAdded) findNavController().navigateUp()
         }
 
         binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
@@ -118,6 +145,7 @@ class SearchFragment : Fragment() {
             chip.setOnClickListener(quickSearchListener)
         }
 
+        // Attach listeners AFTER chip defaults are set
         binding.sortGroup.setOnCheckedStateChangeListener { _, checkedIds ->
             val checkedId = checkedIds.firstOrNull() ?: return@setOnCheckedStateChangeListener
             val sortOption = when (checkedId) {
@@ -139,16 +167,13 @@ class SearchFragment : Fragment() {
             }
             viewModel.applySourceFilter(sourceFilter)
         }
-
-        binding.chipSortTrending.isChecked = true
-        binding.chipSourceAll.isChecked = true
     }
 
     private fun setupRecyclerView() {
         wallpaperAdapter = WallpaperAdapter { wallpaper ->
             openWallpaper(wallpaper)
         }
-        gridLayoutManager = GridLayoutManager(context, appPreferences.getGridSpanCount())
+        gridLayoutManager = GridLayoutManager(requireContext(), appPreferences.getGridSpanCount())
         binding.rvSearchResults.apply {
             adapter = wallpaperAdapter
             layoutManager = gridLayoutManager
@@ -159,20 +184,25 @@ class SearchFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.searchResults.observe(viewLifecycleOwner) { wallpapers ->
+            if (_binding == null) return@observe
             wallpaperAdapter.submitList(wallpapers)
             binding.tvResultsSummary.text = if (wallpapers.isEmpty()) {
                 getString(R.string.search_empty_title)
             } else {
                 getString(R.string.search_results_count_label, wallpapers.size)
             }
-            binding.emptyStateGroup.isVisible = wallpapers.isEmpty()
+            if (!isCategoryMode) {
+                binding.emptyStateGroup.isVisible = wallpapers.isEmpty()
+            }
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (_binding == null) return@observe
             binding.progressBar.isVisible = isLoading
         }
 
         viewModel.isLoadingMore.observe(viewLifecycleOwner) { isLoadingMore ->
+            if (_binding == null) return@observe
             binding.btnLoadMore.isEnabled = !isLoadingMore
             binding.btnLoadMore.text = if (isLoadingMore) {
                 getString(R.string.loading_more)
@@ -182,10 +212,12 @@ class SearchFragment : Fragment() {
         }
 
         viewModel.hasMore.observe(viewLifecycleOwner) { hasMore ->
+            if (_binding == null) return@observe
             binding.btnLoadMore.isVisible = hasMore
         }
 
         viewModel.screenTitle.observe(viewLifecycleOwner) { title ->
+            if (_binding == null) return@observe
             binding.toolbar.title = title
         }
     }
@@ -213,6 +245,7 @@ class SearchFragment : Fragment() {
 
         try {
             val navController = findNavController()
+            if (navController.currentDestination?.id != R.id.searchFragment) return
             val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(
                 wallpaperId = wallpaper.id,
                 wallpaperPreviewUrl = WallpaperImageResolver.previewUrl(wallpaper),
@@ -221,14 +254,13 @@ class SearchFragment : Fragment() {
                 wallpaperTitle = WallpaperRanking.title(wallpaper),
                 wallpaperSourceName = wallpaper.sourceName
             )
-            if (navController.currentDestination?.id == R.id.searchFragment) {
-                navController.navigate(action)
-            }
+            navController.navigate(action)
         } catch (_: Exception) { }
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
+        binding.rvSearchResults.adapter = null
         _binding = null
+        super.onDestroyView()
     }
 }

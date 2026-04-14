@@ -179,24 +179,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun openCategory(categoryName: String) {
+        if (categoryName.isBlank()) return
+
         val query: String
         val title: String
-        val asCategory: Boolean
 
         if (categoryName.equals("All", ignoreCase = true)) {
             query = "All"
             title = getString(R.string.view_collections)
-            asCategory = true
         } else {
             query = categoryName
-            title = "$categoryName collection"
-            asCategory = true
+            title = getString(R.string.category_results_label, categoryName)
         }
 
         val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment(
             initialQuery = query,
             initialTitle = title,
-            openAsCategory = asCategory
+            openAsCategory = true
         )
         navigateSafely(action)
     }

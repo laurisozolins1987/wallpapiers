@@ -8,6 +8,7 @@
     <string name="hero_source_label">Mixed from %1$s</string>
     <string name="top_downloads_section_label">Most downloaded this week</string>
     <string name="category_results_label">%1$s collection</string>
+    <string name="category_browse_subtitle">Browse wallpapers by mood and style.</string>
     <string name="wallpaper_count_label">%1$d wallpapers</string>
     <string name="stat_curated">Curated</string>
     <string name="stat_downloads">Downloads</string>

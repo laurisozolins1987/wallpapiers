@@ -30,99 +30,132 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/home_hero_default_title"
-            android:textColor="?attr/colorOnBackground"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/search_empty_supporting"
-            android:textColor="@color/text_secondary_light"
-            android:textSize="14sp" />
-
         <LinearLayout
+            android:id="@+id/categoryHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:visibility="gone">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilSearch"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/search_hint"
-                app:boxCornerRadiusBottomEnd="20dp"
-                app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopEnd="20dp"
-                app:boxCornerRadiusTopStart="20dp"
-                app:endIconMode="clear_text"
-                app:startIconDrawable="@android:drawable/ic_menu_search">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionSearch"
-                    android:inputType="textCapWords" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSearch"
+            <TextView
+                android:id="@+id/tvCategoryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="@string/search_toolbar_title"
-                app:cornerRadius="18dp" />
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCategorySubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/text_secondary_light"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
-        <com.google.android.material.chip.ChipGroup
+        <LinearLayout
+            android:id="@+id/searchSection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:singleLine="true">
+            android:orientation="vertical">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipNature"
-                style="@style/Widget.Material3.Chip.Assist"
-                android:text="Nature" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_hero_default_title"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipAmoled"
-                style="@style/Widget.Material3.Chip.Assist"
-                android:text="AMOLED" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/search_empty_supporting"
+                android:textColor="@color/text_secondary_light"
+                android:textSize="14sp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipMinimal"
-                style="@style/Widget.Material3.Chip.Assist"
-                android:text="Minimal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipSpace"
-                style="@style/Widget.Material3.Chip.Assist"
-                android:text="Space" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilSearch"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/search_hint"
+                    app:boxCornerRadiusBottomEnd="20dp"
+                    app:boxCornerRadiusBottomStart="20dp"
+                    app:boxCornerRadiusTopEnd="20dp"
+                    app:boxCornerRadiusTopStart="20dp"
+                    app:endIconMode="clear_text"
+                    app:startIconDrawable="@android:drawable/ic_menu_search">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipCars"
-                style="@style/Widget.Material3.Chip.Assist"
-                android:text="Cars" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionSearch"
+                        android:inputType="textCapWords" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipTechnology"
-                style="@style/Widget.Material3.Chip.Assist"
-                android:text="Technology" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </com.google.android.material.chip.ChipGroup>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/search_toolbar_title"
+                    app:cornerRadius="18dp" />
+
+            </LinearLayout>
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:singleLine="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipNature"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:text="Nature" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAmoled"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:text="AMOLED" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMinimal"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:text="Minimal" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSpace"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:text="Space" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCars"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:text="Cars" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTechnology"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:text="Technology" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvResultsSummary"
